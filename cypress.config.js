@@ -7,7 +7,7 @@ module.exports = defineConfig({
       return require("./cypress/plugins/index.js")(on, config);
     },
     specPattern: "cypress/features/**/*.feature",
-    baseUrl: "",
+    baseUrl: "https://www.google.com",
     chromeWebSecurity: false,
     viewportWidth: 1920,
     viewportHeight: 1080,
