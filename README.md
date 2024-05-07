@@ -22,7 +22,7 @@ Page Object model is used in spite of what Cypress site says, it increases reada
 
 ### Requirements 🧰
 
--**Enviromeent:** Windows 11  v23H2
+- **Enviromeent:** Windows 11  v23H2
 - **Browser:** Google Chrome v124.0.6367.119
 - Node.js
 - NPM
