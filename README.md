@@ -19,7 +19,6 @@ You can find this exercise on **issues** section
 Do an automation of a google search about term "Automatización".
 Page Object model is used in spite of what Cypress site says, it increases readability of code and is much easier to manage
 
-Browser used: Google Chrome v124.0.6367.119
 
 ### Requirements 🧰
 
