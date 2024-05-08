@@ -35,6 +35,10 @@ For rest of the installations move to project folder in command prompt and type
 
     npm install
 
-which will install Cypress and other supporting tools
+which will install Cypress and other supporting tools.
+
+To run tests type
+
+    npx cypress open 
 
 Done by: Antonio Seoane
