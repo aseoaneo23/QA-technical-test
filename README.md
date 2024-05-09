@@ -59,7 +59,7 @@ For rest of the installations move to project folder in command prompt and type
 
     npm install
 
-which will install Cypress and other supporting tools.
+which will install Karate and other supporting tools.
 
 To run all the tests type
 
