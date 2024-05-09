@@ -14,3 +14,4 @@ Scenario: Return the created user
     Given path `/user/${username}`
     When method get
     Then status 200
+    And match response == data
