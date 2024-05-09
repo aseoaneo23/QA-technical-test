@@ -28,10 +28,9 @@ Page Object model is used in spite of what Cypress site says, it increases reada
 - NPM
   
 ### How to run 🎯
-
 You need to have Node.js installed before using Cypress. You can find more information [here](https://nodejs.org/en/learn/getting-started/how-to-install-nodejs)
 
-For rest of the installations move to project folder in command prompt and type
+For rest of the installations move to project folder in command prompt, enter on "Prueba_automatizacion" file and type
 
     npm install
 
@@ -55,7 +54,7 @@ Do an test automation of Swagger Petshop API with Karate
 
 You need to have Node.js installed before using Karate. You can find more information [here](https://nodejs.org/en/learn/getting-started/how-to-install-nodejs)
 
-For rest of the installations move to project folder in command prompt and type
+For rest of the installations move to project folder in command prompt, enter on "Prueba_api" file  and type
 
     npm install
 
