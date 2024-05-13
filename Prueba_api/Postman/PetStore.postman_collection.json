@@ -1,0 +1,489 @@
+{
+	"info": {
+		"_postman_id": "c49e7726-91bc-486f-b3b2-25d6b78e44c2",
+		"name": "PetStore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "33753725"
+	},
+	"item": [
+		{
+			"name": "Create new user",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Request body is valid\", () => {\r",
+							"\r",
+							"    const requestBody =JSON.parse(pm.request.body.raw)\r",
+							"\r",
+							"    pm.expect(requestBody.id).to.be.a('number');\r",
+							"    pm.expect(requestBody.id).to.be.above(0);\r",
+							"\r",
+							"    pm.expect(requestBody.username).to.be.a('string');\r",
+							"    pm.expect(requestBody.username).to.not.be.empty;\r",
+							"\r",
+							"    pm.expect(requestBody.firstName).to.be.a('string');\r",
+							"    pm.expect(requestBody.firstName).to.not.be.empty;\r",
+							"\r",
+							"    pm.expect(requestBody.lastName).to.be.a('string');\r",
+							"    pm.expect(requestBody.lastName).to.not.be.empty;\r",
+							"\r",
+							"    pm.expect(requestBody.email).to.be.a('string');\r",
+							"    pm.expect(requestBody.email).to.not.be.empty;\r",
+							"\r",
+							"    pm.expect(requestBody.password).to.be.a('string');\r",
+							"    pm.expect(requestBody.password).to.not.be.empty;\r",
+							"\r",
+							"    pm.expect(requestBody.phone).to.be.a('string');\r",
+							"    pm.expect(requestBody.phone).to.not.be.empty;\r",
+							"\r",
+							"    pm.expect(requestBody.userStatus).to.be.a('number');\r",
+							"    pm.expect(requestBody.userStatus).to.be.within(0, 1);\r",
+							"\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Fixed test script",
+							"pm.test(\"Check response body is valid\", function () {",
+							"    pm.expect(pm.response.json()).to.have.property('code');",
+							"    pm.expect(pm.response.json()).to.have.property('type');",
+							"    pm.expect(pm.response.json()).to.have.property('message');",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":1,\r\n    \"username\":\"usuario1\",\r\n    \"firstName\":\"usuario\",\r\n    \"lastName\":\"usuario\",\r\n    \"email\":\"miemail@mail.com\",\r\n    \"password\":\"12345\",\r\n    \"phone\":\"1234\",\r\n    \"userStatus\":0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://petstore.swagger.io/v2/user"
+			},
+			"response": []
+		},
+		{
+			"name": "Create a new order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\",() => {\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"\r",
+							"var schema = {\r",
+							"        \"id\": 4,\r",
+							"        \"petId\": 74408294,\r",
+							"        \"quantity\": 10,\r",
+							"        \"shipDate\": \"2024-05-10T07:33:43.916+0000\",\r",
+							"        \"status\": \"trying\",\r",
+							"        \"complete\": true\r",
+							"    }\r",
+							"\r",
+							"pm.test('Response schema is valid', () => {\r",
+							"    pm.response.to.have.jsonBody(schema)\r",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Request body is valid\", () => {\r",
+							"\r",
+							"    const requestBody =JSON.parse(pm.request.body.raw)\r",
+							"\r",
+							"    pm.expect(requestBody.id).to.be.a('number');\r",
+							"    pm.expect(requestBody.id).to.be.above(0);\r",
+							"\r",
+							"    pm.expect(requestBody.petId).to.be.a('number');\r",
+							"    pm.expect(requestBody.petId).to.be.above(0);\r",
+							"\r",
+							"    pm.expect(requestBody.quantity).to.be.a('number');\r",
+							"    pm.expect(requestBody.quantity).to.be.above(0);\r",
+							"\r",
+							"    pm.expect(requestBody.shipDate).to.be.a('string');\r",
+							"    pm.expect(requestBody.shipDate).to.not.be.empty;\r",
+							"\r",
+							"    pm.expect(requestBody.status).to.be.a('string');\r",
+							"    pm.expect(requestBody.status).to.not.be.empty;\r",
+							"\r",
+							"    pm.expect(requestBody.complete).to.be.a('boolean');\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 4,\r\n  \"petId\": 74408294,\r\n  \"quantity\": 10,\r\n  \"shipDate\": \"2024-05-10T07:33:43.916Z\",\r\n  \"status\": \"trying\",\r\n  \"complete\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://petstore.swagger.io/v2/store/order"
+			},
+			"response": []
+		},
+		{
+			"name": "Check user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var responseBody = {\r",
+							"    \"items\": {\r",
+							"         \"id\":1,\r",
+							"         \"username\":\"usuario1\",\r",
+							"         \"firstName\":\"usuario\",\r",
+							"         \"lastName\":\"usuario\",\r",
+							"         \"email\":\"miemail@mail.com\",\r",
+							"         \"password\":\"12345\",\r",
+							"         \"phone\":\"1234\",\r",
+							"         \"userStatus\":0\r",
+							"    }\r",
+							"};\r",
+							"\r",
+							"pm.test('Response is valid', () => {\r",
+							"    pm.response.to.have.jsonBody(responseBody)\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {},
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": {
+						"value": "special-key",
+						"key": "x-api-key"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "special-key",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://petstore.swagger.io/v2/user/usuario1"
+			},
+			"response": []
+		},
+		{
+			"name": "Show sold pets",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonResponse = pm.response.json()\r",
+							"\r",
+							"var mascotasVendidas = []\r",
+							"\r",
+							"jsonResponse.forEach((mascota)=>{\r",
+							"\r",
+							"    if (mascota.status === \"sold\") {\r",
+							"        mascotasVendidas.push({\"id\": mascota.id, \"name\": mascota.name})\r",
+							"    }\r",
+							"})\r",
+							"\r",
+							"console.log(\"Mascotas vendidas : \")\r",
+							"console.log(mascotasVendidas)\r",
+							"\r",
+							"\r",
+							"class ContadorMascotas {\r",
+							"    constructor(mascotasVendidas) {\r",
+							"        this.mascotasVendidas = mascotasVendidas;\r",
+							"    }\r",
+							"\r",
+							"    contarMascotasPorNombre() {\r",
+							"        let conteoMascotas = {};\r",
+							"        // Recorrer las mascotas y contar cuántas tienen el mismo nombre\r",
+							"        this.mascotasVendidas.forEach(mascota => {\r",
+							"            if (conteoMascotas[mascota.name]) {\r",
+							"                conteoMascotas[mascota.name]++;\r",
+							"            } else {\r",
+							"                conteoMascotas[mascota.name] = 1;\r",
+							"            }\r",
+							"        });\r",
+							"        return conteoMascotas;\r",
+							"    }\r",
+							"}\r",
+							"\r",
+							"var contador = new ContadorMascotas(jsonResponse);\r",
+							"\r",
+							"var conteoMascotasPorNombre = contador.contarMascotasPorNombre();\r",
+							"\r",
+							"console.log(\"Conteo de mascotas por nombre:\");\r",
+							"console.log(conteoMascotasPorNombre);\r",
+							"\r",
+							"\r",
+							"//Control de estructura de datos de respuesta\r",
+							"var schema = {\r",
+							"\r",
+							"  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\r",
+							"  \"type\": \"object\",\r",
+							"  \"properties\": {\r",
+							"    \"id\": {\r",
+							"      \"type\": \"integer\"\r",
+							"    },\r",
+							"    \"category\": {\r",
+							"      \"type\": \"object\",\r",
+							"      \"properties\": {\r",
+							"        \"id\": {\r",
+							"          \"type\": \"integer\"\r",
+							"        },\r",
+							"        \"name\": {\r",
+							"          \"type\": \"string\"\r",
+							"        }\r",
+							"      },\r",
+							"      \"required\": [\r",
+							"        \"id\",\r",
+							"        \"name\"\r",
+							"      ]\r",
+							"    },\r",
+							"    \"name\": {\r",
+							"      \"type\": \"string\"\r",
+							"    },\r",
+							"    \"photoUrls\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": [\r",
+							"        {\r",
+							"          \"type\": \"string\"\r",
+							"        }\r",
+							"      ]\r",
+							"    },\r",
+							"    \"tags\": {\r",
+							"      \"type\": \"array\",\r",
+							"      \"items\": [\r",
+							"        {\r",
+							"          \"type\": \"object\",\r",
+							"          \"properties\": {\r",
+							"            \"id\": {\r",
+							"              \"type\": \"integer\"\r",
+							"            },\r",
+							"            \"name\": {\r",
+							"              \"type\": \"string\"\r",
+							"            }\r",
+							"          },\r",
+							"          \"required\": [\r",
+							"            \"id\",\r",
+							"            \"name\"\r",
+							"          ]\r",
+							"        }\r",
+							"      ]\r",
+							"    },\r",
+							"    \"status\": {\r",
+							"      \"type\": \"string\"\r",
+							"    }\r",
+							"  },\r",
+							"  \"required\": [\r",
+							"    \"id\",\r",
+							"    \"category\",\r",
+							"    \"name\",\r",
+							"    \"photoUrls\",\r",
+							"    \"tags\",\r",
+							"    \"status\"\r",
+							"  ]\r",
+							"};\r",
+							"\r",
+							"pm.test('Response data is valid', () => {\r",
+							"    pm.response.to.have.jsonBody(schema)\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/pet/findByStatus?status=sold",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet",
+						"findByStatus"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "sold"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check order by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"\r",
+							"pm.test(\"Status code is 200\", () => {\r",
+							"    pm.response.to.have.status(200)\r",
+							"})\r",
+							"\r",
+							"var responseModel = {\r",
+							"        \"id\": 24,\r",
+							"        \"petId\": 74408294,\r",
+							"        \"quantity\": 10,\r",
+							"        \"shipDate\": \"2024-05-10T07:33:43.916+0000\",\r",
+							"        \"status\": \"trying\",\r",
+							"        \"complete\": true\r",
+							"    }\r",
+							"\r",
+							"\r",
+							"pm.test('Response schema is valid', () => {\r",
+							"    pm.response.to.have.jsonBody(responseModel) //ajv validation,because tv4 is deprecated. Also jsonSchema is available to verify\r",
+							"})\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/store/order/:id",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"store",
+						"order",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"    pm.response.to.have.status(200);\r",
+							"})\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/store/order/:id",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"store",
+						"order",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
