@@ -24,8 +24,9 @@ Page Object model is used in spite of what Cypress site says, it increases reada
 
 - **Enviromeent:** Windows 11  v23H2
 - **Browser:** Google Chrome v124.0.6367.119
-- Node.js
-- NPM
+- Node.js v18.18
+- NPM 10.2.1
+- Java 8 at least (1.8.0)
   
 ### How to run 🎯
 You need to have Node.js installed before using Cypress. You can find more information [here](https://nodejs.org/en/learn/getting-started/how-to-install-nodejs)
@@ -47,8 +48,8 @@ Do an test automation of Swagger Petshop API with Karate
 ### Requirements 🧰
 
 - **Enviromeent:** Windows 11 v23H2
-- Node.js
-- NPM
+- Node.js v18.18
+- NPM 10.2.1
   
 ### How to run 🎯
 
