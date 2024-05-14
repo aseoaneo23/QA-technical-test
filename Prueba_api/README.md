@@ -1,6 +1,11 @@
 ## Exercise 3
 ### Description 📖
-Do an test automation of Swagger Petshop API with Karate 
+Do an test automation of Swagger Petshop API with Karate. 
+
+The requirement to have a class whose constructor depended on the previous task could not be carried out due to the limitations of the Karate framework.
+
+In the official documentation there are no declarations of the use of classes and it is even established that in the feature
+only js files containing a single function can be required
 
 ### Requirements 🧰
 
