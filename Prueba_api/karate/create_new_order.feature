@@ -1,7 +1,7 @@
 Feature: Create a new pet order to the shop
 
 Background: 
-    * url 'https://petstore.swagger.io/v2'
+    Given url 'https://petstore.swagger.io/v2'
     * def orderData = read('./data/new_order.json')
 Scenario: Creating a successful order
     Given path '/store/order'

@@ -1,7 +1,7 @@
 Feature: Create a new user
 
 Background: 
-    * url 'https://petstore.swagger.io/v2'
+    Given url 'https://petstore.swagger.io/v2'
     * def data = read('./data/new_user.json')
 Scenario: Create a new user
     Given path '/user'
